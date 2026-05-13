@@ -1,7 +1,7 @@
 name: Update Predictions
 on:
   schedule:
-    - cron: '40 06 *' # 06:40 em Maputo
+    - cron: '40 06 ***' # 6:40 Maputo
   workflow_dispatch:
 
 permissions:
