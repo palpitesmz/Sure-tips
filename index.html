@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suretips</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>SURETIPS</h1>
+  <p>Palpites diários com odds seguras</p>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="openTab('gratis')">Grátis</button>
+  <button class="tab-btn" onclick="openTab('vipdiario')">VIP Diário</button>
+  <button class="tab-btn" onclick="openTab('vipsemanal')">VIP Semanal</button>
+</div>
+
+<div id="gratis" class="tab-content active">
+  <h2>🎯 Bilhete Grátis - Odds 1.50 a 1.80</h2>
+  <div id="gratis-games"></div>
+  <button onclick="toggleResults('gratis-results')">Ver Resultados Ontem</button>
+  <div id="gratis-results" class="results" style="display:none;"></div>
+</div>
+
+<div id="vipdiario" class="tab-content">
+  <h2>💎 VIP Diário - Odds 2.00 a 3.00</h2>
+  <div id="vipdiario-locked" class="locked">
+    <p>Conteúdo bloqueado</p>
+    <p>Paga 100 MZN via WhatsApp e recebe a senha</p>
+    <a href="https://wa.me/258860676062" class="btn-whatsapp">Falar no WhatsApp</a>
+    <input type="password" id="senha-diario" placeholder="Digite a senha">
+    <button onclick="unlock('diario')">Desbloquear</button>
+  </div>
+  <div id="vipdiario-games" class="hidden"></div>
+</div>
+
+<div id="vipsemanal" class="tab-content">
+  <h2>👑 VIP Semanal - Odds 3.00 a 4.00</h2>
+  <div id="vipsemanal-locked" class="locked">
+    <p>Conteúdo bloqueado</p>
+    <p>Paga 300 MZN via WhatsApp e recebe a senha</p>
+    <a href="https://wa.me/258860676062" class="btn-whatsapp">Falar no WhatsApp</a>
+    <input type="password" id="senha-semanal" placeholder="Digite a senha">
+    <button onclick="unlock('semanal')">Desbloquear</button>
+  </div>
+  <div id="vipsemanal-games" class="hidden"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
