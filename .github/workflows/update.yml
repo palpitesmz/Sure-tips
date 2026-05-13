@@ -1,7 +1,7 @@
 name: Update Predictions
 on:
   schedule:
-    - cron: '0 8_ *'
+    - cron: '0 8 _ *'
   workflow_dispatch:
 
 jobs:
