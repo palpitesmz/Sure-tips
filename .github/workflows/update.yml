@@ -1,21 +1,33 @@
 name: Atualiza Palpites IA
+
 on:
   schedule:
-    - cron: '40 18 * * *' # 20:40 Maputo = 18:40 UTC
-  workflow_dispatch:
+    - cron: '0 6 *' # Roda todo dia às 06:00 UTC
+  workflow_dispatch: # Permite rodar manual
+
 jobs:
   update:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-      - run: pip install requests pytz
-      - run: python update.py
-      - run: |
-          git config user.name "bot"
-          git config user.email "bot@users.noreply.github.com"
-          git add index.html
-          git commit -m "update auto IA"
-          git push
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: pip install requests pytz
+
+    - name: Run update script
+      run: python update.py
+
+    - name: Commit and push changes
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add dados.json index.html
+        git diff --staged --quiet || git commit -m "Atualiza palpites IA [auto]"
+        git push
