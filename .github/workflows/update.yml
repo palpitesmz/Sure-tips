@@ -1,34 +1,21 @@
-name: Update Predictions
+name: Atualiza Palpites IA
 on:
   schedule:
-    - cron: '0 07 *' # 09:00 em Maputo
+    - cron: '40 18 * * *' # 20:40 Maputo = 18:40 UTC
   workflow_dispatch:
-
-permissions:
-  contents: write
-
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
-      
-      - name: Run update script
-        env:
-          API_KEY: ${{ secrets.API_KEY }}
-        run: |
-          pip install requests
-          python update.py
-      
-      - name: Commit changes
-        run: |
-          git config --global user.name 'github-actions'
-          git config --global user.email 'github-actions@github.com'
-          git add dados.json
-          git commit -m "Update predictions" || exit 0
+          python-version: '3.11'
+      - run: pip install requests pytz
+      - run: python update.py
+      - run: |
+          git config user.name "bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add index.html
+          git commit -m "update auto IA"
           git push
