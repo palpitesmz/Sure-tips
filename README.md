@@ -3,7 +3,7 @@
 Bot automático que atualiza palpites de futebol usando GitHub Actions.
 
 ## Como funciona
-- Roda todo dia às 11:00 em Maputo
+- Roda todo dia às 18:40 em Maputo
 - Busca dados da API e salva em `dados.json`
 - Faz commit automático no repositório
 
